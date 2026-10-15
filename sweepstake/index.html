@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FlankerIndex - Unlock Epic Gaming Rewards</title>
+<!-- Tailwind CSS v3 CDN with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vaultDark: '#080914',
+            vaultNavy: '#0c0e23',
+            vaultCard: '#131633',
+            neonCyan: '#00f3ff',
+            neonPurple: '#a855f7',
+            neonPink: '#ec4899',
+            neonGold: '#eab308'
+          },
+          boxShadow: {
+            'neon-purple': '0 0 25px -5px rgba(168, 85, 247, 0.5)',
+            'neon-cyan': '0 0 25px -5px rgba(0, 243, 255, 0.5)',
+            'neon-gold': '0 0 20px -3px rgba(234, 179, 8, 0.4)',
+            'glass-inset': 'inset 0 1px 1px 0 rgba(255, 255, 255, 0.15)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Custom Styles for Cyberpunk/Glassmorphic Effects -->
+<style data-purpose="custom-glassmorphism">
+    .glass-card {
+      background: linear-gradient(135deg, rgba(26, 30, 64, 0.7) 0%, rgba(13, 16, 40, 0.85) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.3);
+      transform: translateY(-2px);
+    }
+    .neon-text-glow {
+      text-shadow: 0 0 15px rgba(236, 72, 153, 0.6), 0 0 30px rgba(168, 85, 247, 0.4);
+    }
+    .neon-border-gold {
+      border: 1px solid rgba(234, 179, 8, 0.5);
+      box-shadow: 0 0 15px rgba(234, 179, 8, 0.25);
+    }
+
+    /* Responsive refinements and hero background image; existing UI/features preserved. */
+    html { -webkit-text-size-adjust: 100%; }
+    body { width: 100%; min-width: 320px; }
+    img { max-width: 100%; }
+    .hero-banner { isolation: isolate; background-color: #080914; }
+    .hero-background-image {
+      position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background-image: linear-gradient(180deg, rgba(6,7,19,.68) 0%, rgba(6,7,19,.84) 72%, #060713 100%),
+        linear-gradient(90deg, rgba(6,7,19,.72), rgba(6,7,19,.20)),
+        url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHkzJzzFjeje1ypJu075jAhGyE9I8Vud8byIazc8QR4Ch1ofYlEQpgAS-ncmvklTc70CwqDEFAPDolLPJYUWm9tUeGxxJTwVy6dwiquGoGg5xOoDTHMmjESTe6QGQvgd3HhbKmwhP2JVuUEFXZxl63VI-3iIUtO4lgUNxfA5Bvt1isf-FvW5brKA_oODUAcV863cS1eFfRFpYOygro2KL1fTEPw-OIjFkReHq6AfmsMGYHPLHzJt07-Q');
+      background-position: center, center, center 38%; background-size: cover; background-repeat: no-repeat;
+      opacity: .78; transform: scale(1.015);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    @media (max-width: 767px) {
+      header [data-purpose="site-navigation"] > div { min-height: 68px; height: auto; padding-top: 12px; padding-bottom: 12px; gap: 10px; }
+      header nav { display: none !important; }
+      header [data-purpose="site-navigation"] > div > div:last-child { gap: .5rem; }
+      header button { padding-left: .7rem !important; padding-right: .7rem !important; }
+      .hero-banner { padding-top: 2.5rem; padding-bottom: 3.5rem; }
+      .hero-background-image { background-position: center, center, 58% center; opacity: .6; }
+      [data-purpose="featured-games"] > div > div:first-child,
+      [data-purpose="gaming-offers"] > div > div:first-child,
+      [data-purpose="beta-and-quests"] > div > div:first-child { gap: 12px; }
+      [data-purpose="featured-games"] h2 { max-width: 75%; }
+      .glass-card { min-width: 0; }
+      footer [data-purpose="main-footer"] { text-align: center; }
+    }
+    @media (max-width: 420px) {
+      header .text-xl { font-size: 1rem; }
+      header button { font-size: .75rem !important; }
+      [data-purpose="hero-banner"] h1 { font-size: clamp(2.25rem, 12vw, 3.2rem); }
+      [data-purpose="hero-banner"] p { font-size: .95rem; }
+      [data-purpose="gaming-offers"] .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .fixed.bottom-6.right-6 { right: 1rem; bottom: 1rem; }
+    }
+  </style>
+</head>
+<body class="bg-[#060713] text-slate-100 min-h-screen selection:bg-purple-500 selection:text-white relative overflow-x-hidden font-sans">
+<!-- Ambient Cyberpunk Background Glows -->
+<div class="fixed top-0 left-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<div class="fixed top-1/3 right-10 w-[30rem] h-[30rem] bg-cyan-600/15 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+<div class="fixed bottom-10 left-1/3 w-[36rem] h-[36rem] bg-indigo-600/10 rounded-full blur-[180px] pointer-events-none -z-10"></div>
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 backdrop-blur-md bg-[#080917]/80 border-b border-white/10" data-purpose="site-navigation">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Logo Branding -->
+<div class="flex items-center space-x-3 cursor-pointer">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-cyan-400 p-[2px] flex items-center justify-center shadow-neon-purple">
+<div class="w-full h-full bg-[#0d0f28] rounded-[10px] flex items-center justify-center">
+<i class="w-5 h-5 text-cyan-300" data-lucide="sparkles"></i>
+</div>
+</div>
+<span class="text-xl font-black tracking-wider uppercase bg-gradient-to-r from-white via-slate-100 to-purple-300 bg-clip-text text-transparent">
+          FlankerIndex
+        </span>
+</div>
+<!-- Navigation Links -->
+<nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+<a class="hover:text-purple-400 transition" href="#games">New Slots</a>
+<a class="hover:text-purple-400 transition" href="#offers">Reviews</a>
+<a class="hover:text-purple-400 transition" href="#quests">Rewards</a>
+</nav>
+<!-- Auth Action Buttons -->
+<div class="flex items-center space-x-4">
+<button class="px-5 py-2 text-sm font-semibold text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition border border-transparent hover:border-white/10">
+          Login
+        </button>
+<button class="relative group overflow-hidden px-6 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-neon-purple hover:brightness-110 active:scale-95 transition">
+<span class="relative z-10 flex items-center gap-2">
+<span>Play Now</span>
+<i class="w-4 h-4 text-yellow-300 fill-yellow-300" data-lucide="zap"></i>
+</span>
+</button>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative pt-12 pb-20 overflow-hidden hero-banner" data-purpose="hero-banner">
+ <div class="hero-background-image" aria-hidden="true"></div>
+<!-- Hero Subtle Particles Pattern Overlay -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+<h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
+<span class="bg-gradient-to-r from-white via-pink-200 to-purple-300 bg-clip-text text-transparent neon-text-glow">
+            Unlock Epic
+          </span>
+<br/>
+<span class="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-md">
+            Gaming Rewards
+          </span>
+</h1>
+<p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          Level up your gaming experience, complete quests, compete in global leaderboards, and claim cutting-edge tech gear daily.
+        </p>
+</div>
+<!-- Hero Interactive Media Banner -->
+
+<section class="py-12 relative" data-purpose="featured-games" id="games">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-wide">Featured Battle Arenas</h2>
+<p class="text-slate-400 text-sm mt-1">Jump into high-stakes matches and accumulate vault tokens</p>
+</div>
+<a class="text-sm font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1" href="#">
+          View All <i class="w-4 h-4" data-lucide="arrow-right"></i>
+</a>
+</div>
+<!-- 3-Column Top Tier Game Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Game 1: Fantase RPG -->
+<div class="glass-card glass-card-hover rounded-2xl overflow-hidden p-3 flex flex-col transition duration-300">
+<div class="relative rounded-xl overflow-hidden mb-3 aspect-[4/3] bg-slate-900">
+<img alt="Fantase RPG artwork" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHkzJzzFjeje1ypJu075jAhGyE9I8Vud8byIazc8QR4Ch1ofYlEQpgAS-ncmvklTc70CwqDEFAPDolLPJYUWm9tUeGxxJTwVy6dwiquGoGg5xOoDTHMmjESTe6QGQvgd3HhbKmwhP2JVuUEFXZxl63VI-3iIUtO4lgUNxfA5Bvt1isf-FvW5brKA_oODUAcV863cS1eFfRFpYOygro2KL1fTEPw-OIjFkReHq6AfmsMGYHPLHzJt07-Q"/>
+<span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-semibold text-purple-300 border border-purple-500/30">
+              RPG Adventure
+            </span>
+<span class="absolute top-3 right-3 bg-yellow-500/90 text-slate-950 font-bold px-2 py-0.5 rounded text-xs flex items-center gap-1">
+<i class="w-3 h-3 fill-slate-950" data-lucide="star"></i> 4.9
+            </span>
+</div>
+<div class="px-2 pt-1 pb-2 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold text-white mb-1">Fantase RPG</h3>
+<p class="text-xs text-slate-400">Embark on legendary quests to uncover hidden relics and earn vault keys.</p>
+</div>
+<button class="mt-4 w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-sm shadow-neon-purple active:scale-[0.98] transition">
+              Play Now
+            </button>
+</div>
+</div>
+<!-- Game 2: Science of Tanks / Farrds -->
+<div class="glass-card glass-card-hover rounded-2xl overflow-hidden p-3 flex flex-col transition duration-300 border-purple-500/30 shadow-neon-purple">
+<div class="relative rounded-xl overflow-hidden mb-3 aspect-[4/3] bg-slate-900">
+<img alt="Science of Tanks artwork" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp9SQE5oBwbJvQBj3qE3vSW-qj3no_A8LAIRJRJlXP_WFIAuFjf9zXpWSK2rPrKo3QAqHcNYEHddO2Ilrot68r-7LfKBDWNFgfFd19ctMdh0X3H5-xkRXGEdUKq5hmcdEOIx_0hEr7wVeM5MMWLQzV1zNzPXK0O4cKGnCBdXwoqxZ-RVKQeJCAIIU3CsT27UdQwAW4gIbIqvQ2u0tLBtXjEhy9o2bXxx5Mk7dpKZAYHyMlCe7_RBwEJA"/>
+<span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-semibold text-pink-300 border border-pink-500/30">
+              Shooter / PvP
+            </span>
+<span class="absolute top-3 right-3 bg-yellow-500/90 text-slate-950 font-bold px-2 py-0.5 rounded text-xs flex items-center gap-1">
+<i class="w-3 h-3 fill-slate-950" data-lucide="star"></i> 4.8
+            </span>
+</div>
+<div class="px-2 pt-1 pb-2 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold text-white mb-1">Science &amp; Farrds</h3>
+<p class="text-xs text-slate-400">Futuristic tactical sci-fi combat. Defeat enemy squadrons to gain multipliers.</p>
+</div>
+<button class="mt-4 w-full py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-sm shadow-neon-purple active:scale-[0.98] transition">
+              Play Now
+            </button>
+</div>
+</div>
+<!-- Game 3: Scal-Duty PPTG -->
+<div class="glass-card glass-card-hover rounded-2xl overflow-hidden p-3 flex flex-col transition duration-300">
+<div class="relative rounded-xl overflow-hidden mb-3 aspect-[4/3] bg-slate-900">
+<img alt="Scal-Duty PPTG artwork" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtowLTtq9dlQXF4SUrgl105oFFVm3WXQgVilzZgcdK7AZwuWn8k7OqEFffbGzx5YoBIw-rswzHC6cbEhdA4GQEocVCycqM78j1q9a_1dlV8hn5sIAmTkvL9tdVhhY0ZJUb_va5H6MA6GxGQ9eKsM_px0GoU4kPrbhRQtBJLRX6MfdRQDV0EsAYYATGN3I1n4lbqvS0hfeQhDKq8pOUqjqFeuFQLvtzJfcsJdC4K-r8QBft8uYKrKNwQA"/>
+<span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-semibold text-cyan-300 border border-cyan-500/30">
+              Battle Royale
+            </span>
+<span class="absolute top-3 right-3 bg-yellow-500/90 text-slate-950 font-bold px-2 py-0.5 rounded text-xs flex items-center gap-1">
+<i class="w-3 h-3 fill-slate-950" data-lucide="star"></i> 5.0
+            </span>
+</div>
+<div class="px-2 pt-1 pb-2 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold text-white mb-1">Scal-Duty PPTG</h3>
+<p class="text-xs text-slate-400">Join the frontline warfare. Compete with 100 soldiers for instant cash rewards.</p>
+</div>
+<button class="mt-4 w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-sm shadow-neon-cyan active:scale-[0.98] transition">
+              Play Now
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FeaturedGamesGrid -->
+<!-- BEGIN: ActiveGamingOffersSection -->
+<section class="py-12 relative" data-purpose="gaming-offers" id="offers">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Title & Subheading -->
+<div class="flex items-center gap-2 mb-6">
+<div class="p-2 bg-pink-500/20 text-pink-400 rounded-xl">
+<i class="w-5 h-5" data-lucide="flame"></i>
+</div>
+<div>
+<h2 class="text-2xl font-bold text-white">Active Gaming Offers</h2>
+<p class="text-xs text-slate-400">Exclusive time-limited discounts, vouchers and item bundles</p>
+</div>
+</div>
+<!-- Gaming Offers Dashboard / Cards Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-10">
+<!-- Card 1: Headset Promo Banner -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-pink-500/10 rounded-full blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30 uppercase">
+                Limited 12 Live
+              </span>
+<span class="text-xs font-mono text-slate-400 flex items-center gap-1">
+<i class="w-3.5 h-3.5 text-purple-400" data-lucide="clock"></i> 00:18:03
+              </span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1">Razer Cyber Pro Headset</h4>
+<p class="text-xs text-slate-400 mb-3">Immersive 7.1 spatial surround sound</p>
+<img alt="Gaming Headset discount offer" class="w-full h-28 object-cover rounded-xl border border-white/10 mb-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOrdD_wae_U1Hgn9xTSxe81K_DioCVPzdAXJ1Uy6g-Sxj-sfn8Se1TZLulQy-U4DT_8o5uny4_UWQMDmDHmkUSjeuLPggZb6ZtcpRIfcuOyV7_xNak5qb15QvJGi3_Q-b6khG4gzN0gjElQAdHbo8oi5KWf4PyDKpThEUt87gs-1gtBwFdsmx7NVntT9RWnUSdnhFlSTErxnOcaYca2pMkYoSZ7D9ZZQqEilk8F6zfdEgUxV-4icg_ug"/>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-extrabold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-md">51% OFF</span>
+<button class="px-4 py-1.5 rounded-lg text-xs font-bold text-white bg-purple-600 hover:bg-purple-500 transition">Claim</button>
+</div>
+</div>
+<!-- Card 2: Headset Variant Deals -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30 uppercase">
+                Hardware
+              </span>
+<span class="text-xs font-bold text-yellow-400">25% Deal</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1">Aero Wireless Gear</h4>
+<p class="text-xs text-slate-400 mb-2">Ultra-low latency wireless transceiver</p>
+<img alt="Wireless peripherals deal" class="w-full h-28 object-cover rounded-xl border border-white/10 mb-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8XnvvYQAgD2VlLsRr3owScEQUH90qOB3OJhwPmDfHGSo4_mcx5alAXvWzE5hocXOcTmfUYfATMpB6CdJVfYU7WqEHQF8GsaSWMNthYsL1EsIsWAmSORjFg2pzdbeutEsVnXK8_jez2jIdF-ZxNw1nw2RlZt_jVSsst_SZA9jsnX1liDIw6dJ_3SeoCVDzbjbRoHBROPo0HkRVZBJfBDhN5zbzDj1ifJdwtBh5BlyXGUhcD-lYARxnkQ"/>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-300 font-bold">$79.99 <span class="line-through text-slate-500 text-[10px]">$110</span></span>
+<button class="px-4 py-1.5 rounded-lg text-xs font-bold text-white bg-slate-700 hover:bg-slate-600 transition">View</button>
+</div>
+</div>
+<!-- Card 3: Vault Coins Tracker -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 uppercase">
+                25% Bonus Booster
+              </span>
+<span class="text-xs font-semibold text-yellow-400">LVL 4-6</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1">Gold Vault Tokens</h4>
+<p class="text-xs text-slate-400 mb-2">Daily Rewards Claimed: <strong class="text-white">4,295</strong></p>
+<img alt="Gold coins bonus stack" class="w-full h-28 object-cover rounded-xl border border-white/10 mb-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG-ci7BKcJvzR3BQbB8C69ItabsqCeAPDmVNiOOudBTZDltPKqx31OiENaIhPC2pWXezaXXC9ac7-qB1FbYOrU_vbbhOPe-QeZ6V68rSbCptvFJAVl3R-U99JJszrgK1QtU89xJbeVVCs-CZ9BJxKEyZRMR4973GYCNK8J3joGG6e0icByUm6yt0g2VYNi242MnsI34x79iTqXJ3MXCy4uw5bCWX7kj0j6ey9U4qY3scAnXykv6G1dhQ"/>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-extrabold text-yellow-400">+36% Boost</span>
+<button class="px-4 py-1.5 rounded-lg text-xs font-bold text-slate-900 bg-yellow-400 hover:bg-yellow-300 transition">Collect</button>
+</div>
+</div>
+<!-- Card 4: Quick Spin mini-banner -->
+<div class="glass-card rounded-2xl p-4 flex flex-col justify-between border-cyan-500/20">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 uppercase">
+                Instant Win
+              </span>
+<i class="w-4 h-4 text-cyan-400" data-lucide="sparkles"></i>
+</div>
+<h4 class="text-sm font-bold text-white mb-1">Mystery Spin Wheel</h4>
+<p class="text-xs text-slate-400 mb-2">Spin once free every 24 hours</p>
+<img alt="Mystery spin wheel banner" class="w-full h-28 object-cover rounded-xl border border-white/10 mb-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbZBfTXvAAek6a_pNeiwrsPGrN-r9e_kVPrFsncJd6f26JBwS7GKnbOJTsO5PwJJTZ2WFIMJy4U6PEI5Javyvrrqw17xlXxCfIP4HVBLn8sTuG8T0xkk_fJTm5wwswPDzcvhOb4z0mFhpcWOuqhpPS6ZqITMRR3594qV3ODOyvPTTUcCFfA3pGb8NiT567_nDYDprhaX4BS4_7lwWyaRz2OziyNQAEBY4rq5BA1Op8I1l1wF1YE1tqEQ"/>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-xs text-cyan-300 font-semibold">1 Spin Ready</span>
+<button class="px-4 py-1.5 rounded-lg text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-500 transition">Spin</button>
+</div>
+</div>
+</div>
+<!-- Secondary Mini Games Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<!-- Mini Item 1 -->
+<div class="glass-card rounded-xl p-3 text-center flex flex-col items-center">
+<img alt="Slot game thumbnail" class="w-full h-20 object-cover rounded-lg mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBywBx2oY7NyFL4TdeqTRSA1hpdedQxZ-U09PMm6cTHiq_Gxw2nDUienTR_-YqFvvuOsyfSKpOY6V5x0dnGmezfBIJl92GPSfQJnYFKGsOA-TVqGJTRBVYz55xAVoIWgPDK3zHWlhK2m8emN4K8VKEgeFRKMfE2llc6rYJA0os0hQ5U1ueiDBtPQSc95WN7PS3ODISTQEWcOiuHN45oy5AcNZREjeq8uZZr1KYcMQLLHPo7gaSubgFwZg"/>
+<span class="text-xs font-bold text-white truncate w-full mb-2">Slot Galaxy</span>
+<button class="w-full py-1 rounded bg-purple-600 text-[11px] font-bold hover:bg-purple-500 transition">Play</button>
+</div>
+<!-- Mini Item 2 -->
+<div class="glass-card rounded-xl p-3 text-center flex flex-col items-center">
+<img alt="Racing thumbnail" class="w-full h-20 object-cover rounded-lg mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvCKRnOSI8COsA2hzvywWVgzqGNe8GoYwLVrOtwVQQBaE19GC1FD3mKRu07Bn4Dk6BmfRPkGqCCZxIcb6q35ntBH84GLFvtmb-0aZg9gO9PYt9jDcTnOljQM1w3XKbwJ5r8p6LjQKTFzkP1xJopEAGB_oQoYu7oLFWKV64RDI2FH7kjD_tgl8tLAdUsrVZQ9vNPDpLrYLCf3ekSNEBDxuSoqtb_LX7guK75u3ycRyvLxyxx0CwLEHGXQ"/>
+<span class="text-xs font-bold text-white truncate w-full mb-2">Apex Racer</span>
+<button class="w-full py-1 rounded bg-purple-600 text-[11px] font-bold hover:bg-purple-500 transition">Play</button>
+</div>
+<!-- Mini Item 3 -->
+<div class="glass-card rounded-xl p-3 text-center flex flex-col items-center">
+<img alt="Arcade thumbnail" class="w-full h-20 object-cover rounded-lg mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKA8FYZ8hDZiAB5CR0_atYUYHRFmK6CvTVi5tkJsY2dUfphagVA_-7hVSX3AKW0qBvwg708APYXx6-xAn1jrRvdP2XaqnZpj6XEL08_WC099ofW8ZMcyDQiFppDJQbfZKwQud6O78t7ATSH8IFlIsvawu_KAi684eEycaU7IdNVM7_dUQrIgif9VIxSET8t3VUT7owaQLI8wiCnYpDcx2JPUs8KI31t32nq10TVnCxc32gVnM-4yVizw"/>
+<span class="text-xs font-bold text-white truncate w-full mb-2">Dineer Hunt</span>
+<button class="w-full py-1 rounded bg-purple-600 text-[11px] font-bold hover:bg-purple-500 transition">Play</button>
+</div>
+<!-- Mini Item 4 -->
+<div class="glass-card rounded-xl p-3 text-center flex flex-col items-center">
+<img alt="Cyber wild thumbnail" class="w-full h-20 object-cover rounded-lg mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNgn0Oyou8JOdUdA1WIe8ljjNhN7tpp-WIP76dMCNLk-881_AHihaVT-eFgORxeoaS7YHxGZvDojuX7zRxzP7dWgR9ezcHxUe5HMlsxfrnFB8-yF80l5S1AVplx674w6jXUYsCZ-KYpsaW5VJMasuL8roa0fbvXzD_oeaeQ1RyhleLgwDI2yf5ylr2OKZBP_gQHq5Xw_qgZhFcBrIYzIpeie9SIHQ71VkYmqzXWG9mcWCgS3pxU9yuBA"/>
+<span class="text-xs font-bold text-white truncate w-full mb-2">Cyber Wild</span>
+<button class="w-full py-1 rounded bg-purple-600 text-[11px] font-bold hover:bg-purple-500 transition">Play</button>
+</div>
+<!-- Mini Item 5 -->
+<div class="glass-card rounded-xl p-3 text-center flex flex-col items-center">
+<img alt="Gold mine thumbnail" class="w-full h-20 object-cover rounded-lg mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZaCCk9P4wWck-KpNcw3I8hUQLiRyiBuku2O_PxHLdxxfmOhPkZfSJ2HY-gDu3y9Wgz6Q6f7QDz8oBl070MehqM3O99RPRxIdpVRhQJpvBP_PaWonw3RClaTz_h7GYzbcWeESTVWgghN3E2rY8Dw9gx7YhAjtAHm81cFPtW8qXSx9BHGRMuoSYu9RSHRDX-yF4HRlultsj02lbORHExXABKxirSsi3sEz5PU1ZQiIBGzY3vzNbo3Xp7w"/>
+<span class="text-xs font-bold text-white truncate w-full mb-2">Gold Mines</span>
+<button class="w-full py-1 rounded bg-purple-600 text-[11px] font-bold hover:bg-purple-500 transition">Play</button>
+</div>
+<!-- Mini Item 6 -->
+<div class="glass-card rounded-xl p-3 text-center flex flex-col items-center">
+<img alt="Vortex run thumbnail" class="w-full h-20 object-cover rounded-lg mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbVOr5uhnhOQnPghuv4hPDb9NEHYFoLZiyJ6djxmpcP3oDz_qqMUREcHA4TRCRltWZfewC_6-tFN1F-jPHngW_aeCZaqReBKOqygOqIOVJs6EvbJ0skFQEuUNfqdnLcutXXiDDm-0BNP7uxUyDs0u_PpHNo6u5f7P5h3153xLZ6xmYa4xGvbIKOnHoQPBAj4SEuYlpPaNwCqqSiIuS5_cTxD65zjUbX-PxpJKhaNvd5tixdjhaWN9sEQ"/>
+<span class="text-xs font-bold text-white truncate w-full mb-2">Vortex 7</span>
+<button class="w-full py-1 rounded bg-purple-600 text-[11px] font-bold hover:bg-purple-500 transition">Play</button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ActiveGamingOffersSection -->
+<!-- BEGIN: ExclusiveBetaAndQuests -->
+<section class="py-12 relative" data-purpose="beta-and-quests" id="quests">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Exclusive Beta Access Sub-Section -->
+<div class="mb-14">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2">
+<i class="w-5 h-5 text-purple-400" data-lucide="shield-alert"></i>
+<h2 class="text-xl sm:text-2xl font-bold text-white">Exclusive Beta Access</h2>
+</div>
+<span class="text-xs font-semibold text-slate-400 cursor-pointer hover:text-white flex items-center gap-1">
+            View All <i class="w-3.5 h-3.5" data-lucide="chevron-right"></i>
+</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Beta Pass 1 -->
+<div class="glass-card rounded-2xl p-5 border border-purple-500/20 flex flex-col sm:flex-row gap-5 items-center">
+<img alt="Beta access banner" class="w-full sm:w-44 h-32 object-cover rounded-xl border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUx-2LYH_x9SJl5_UgHEQ79h8yP61F2hR9MrMmbxRnWxFToOQawB2FlebW48djeUA1ki-Z98QW77hmuNzjh2Xe1dFGOox1LVaQKmTVZNnxHRwF7wSXgGaFrGZfS24yX_QEgt5QJFoCM6WmTV7WC34Bj3J-Dp-leO-V42UrIC_oIi403Vm0_eB1PYNyc11heLcAacXJARKKAtNLSDXVbpMmaNqQiCWSfk0inC85lqvVkNkUmbNptJoqYg"/>
+<div class="flex-1 w-full">
+<span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300">Closed Beta</span>
+<h3 class="text-base font-bold text-white mt-1">Titan Hunter Online</h3>
+<p class="text-xs text-slate-400 mt-1 mb-4">Direct invite to playtest new raid dungeons &amp; keep exclusive drop skins.</p>
+<div class="flex items-center justify-between gap-3">
+<button class="flex-1 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-xs font-bold text-white transition shadow-neon-purple">
+                  Claim Offer
+                </button>
+<button class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition">
+                  Details
+                </button>
+</div>
+</div>
+</div>
+<!-- Beta Pass 2 -->
+<div class="glass-card rounded-2xl p-5 border border-purple-500/20 flex flex-col sm:flex-row gap-5 items-center">
+<img alt="Free-to-play early banner" class="w-full sm:w-44 h-32 object-cover rounded-xl border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK5hQaOCVk8KSVkEwKyxBpkukTf0DkPDsjihN6esOBanL5ip_XEcBEQnAf_kYsElvBaNwuMXSMFRlVNQ67sfnJYYuGmPG42nxNzPZVhzaT1fVHHtOIcEpNaBYb0mThIj78fTzOJ_pm78__KJ5k3IUvt6mxvHz3NmRRAnQcJWtMnCLGVvkGdaxxJXfz4316iVKRIQSeQ78L5Wm7NcU6G25cDusMiqarGnU1MEJy-_3OsXnPOheUASs7eQ"/>
+<div class="flex-1 w-full">
+<span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300">Free-To-Play</span>
+<h3 class="text-base font-bold text-white mt-1">Outer Planet Siege</h3>
+<p class="text-xs text-slate-400 mt-1 mb-4">Unlock legendary assault mech &amp; bonus starter fuel canister instantly.</p>
+<div class="flex items-center justify-between gap-3">
+<button class="flex-1 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:brightness-110 text-xs font-bold text-white transition shadow-neon-purple">
+                  Claim Offer
+                </button>
+<button class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition">
+                  Details
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Epic Quests & Legendary Items Row -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2">
+<i class="w-5 h-5 text-yellow-400" data-lucide="trophy"></i>
+<h2 class="text-xl sm:text-2xl font-bold text-white">Epic Quests &amp; Rewards</h2>
+</div>
+<span class="text-xs font-semibold text-slate-400 cursor-pointer hover:text-white flex items-center gap-1">
+            Unlock All <i class="w-3.5 h-3.5" data-lucide="chevron-right"></i>
+</span>
+</div>
+<!-- 3 Collectible Showcase Cards (Treasure Chest, Runed Sword, Cyber Visor) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Item 1: Glowing Treasure Chest -->
+<div class="glass-card rounded-2xl p-5 border border-cyan-500/30 flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-cyan-500/10 rounded-full blur-xl"></div>
+<div class="w-full flex justify-between items-center mb-3 text-xs text-slate-400">
+<span class="bg-cyan-500/10 text-cyan-300 px-2 py-0.5 rounded font-mono">Tier IV</span>
+<span class="text-slate-400">Drop Rate 1.2%</span>
+</div>
+<div class="my-4 relative">
+<div class="w-40 h-40 rounded-2xl bg-gradient-to-b from-cyan-900/30 to-purple-900/20 border border-cyan-500/20 flex items-center justify-center p-3 shadow-neon-cyan">
+<img alt="Glowing neon treasure chest" class="object-contain w-full h-full drop-shadow-[0_10px_15px_rgba(0,243,255,0.4)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP4c-RgtW3oRhMGpOCfK8D5TUoZVJqV4zHDor3xWvjiYMcbnO5cQy4hgW_m7jm5E93s_Cu4sYxyFXu9zg75BIG3UcJk2ctmrKdEkFz7NcBHfE9tCOQ1Qmu9C_kGIQHKny9kU5xJL_7JvZy2IS8p-goNh-ezJHsS84rDNcV3CSFZmwq-hOvVpKKiilBD7FHpGYb-04bRyH2uS8bf7P8EHVr-SrFh1LCfDb-hFBxW-vKayTEQAEAsThWjg"/>
+</div>
+</div>
+<h3 class="text-base font-bold text-white mb-1">Mythic Cyber Chest</h3>
+<p class="text-xs text-slate-400 mb-4">Contains 5,000 Vault Credits + chance at rare neon weapon skin</p>
+<button class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-sm shadow-neon-cyan transition mb-3">
+              Play Now
+            </button>
+<div class="inline-flex items-center gap-1 text-[11px] font-semibold text-yellow-400 bg-yellow-500/10 px-3 py-1 rounded-full neon-border-gold">
+<i class="w-3 h-3" data-lucide="clock"></i> Limited Time
+            </div>
+</div>
+<!-- Item 2: Epic Runed Broadsword -->
+<div class="glass-card rounded-2xl p-5 border border-purple-500/30 flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-purple-500/10 rounded-full blur-xl"></div>
+<div class="w-full flex justify-between items-center mb-3 text-xs text-slate-400">
+<span class="bg-purple-500/10 text-purple-300 px-2 py-0.5 rounded font-mono">Legendary</span>
+<span class="text-slate-400">Soulbound</span>
+</div>
+<div class="my-4 relative">
+<div class="w-40 h-40 rounded-2xl bg-gradient-to-b from-purple-900/30 to-indigo-900/20 border border-purple-500/20 flex items-center justify-center p-3 shadow-neon-purple">
+<img alt="Epic runed glowing broadsword" class="object-contain w-full h-full drop-shadow-[0_10px_15px_rgba(168,85,247,0.4)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj6XgnJPwTG6NE41OsrDxPL017E15-dzmircdh0somEwFp5bwyD2tBFSiLN-o-Deu41z2VKeynO3K8HIwlALhI5VdzRbCc0IrYqAY0FmMmkttFDZmBZ7rkVbhaFAC3sJxwAM9PWPvYdopcyyJ7GkwVA3OAZ2E06zTQY_R7WwNj8tNz9g9RV80C96IA8Ox6jSkGSeceUrS9QHHfok5u28dm-UdOcRwyhNwjS2NV4xQ5M_PEwm4liL1Bcg"/>
+</div>
+</div>
+<h3 class="text-base font-bold text-white mb-1">Voidflame Broadsword</h3>
+<p class="text-xs text-slate-400 mb-4">Grants +45% attack speed &amp; exclusive in-game particle aura</p>
+<button class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-sm shadow-neon-purple transition mb-3">
+              Play Now
+            </button>
+<div class="inline-flex items-center gap-1 text-[11px] font-semibold text-yellow-400 bg-yellow-500/10 px-3 py-1 rounded-full neon-border-gold">
+<i class="w-3 h-3" data-lucide="clock"></i> Limited Time
+            </div>
+</div>
+<!-- Item 3: Cybernetic Visor / Helmet -->
+<div class="glass-card rounded-2xl p-5 border border-pink-500/30 flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-pink-500/10 rounded-full blur-xl"></div>
+<div class="w-full flex justify-between items-center mb-3 text-xs text-slate-400">
+<span class="bg-pink-500/10 text-pink-300 px-2 py-0.5 rounded font-mono">Exotic Gear</span>
+<span class="text-slate-400">Season Pass</span>
+</div>
+<div class="my-4 relative">
+<div class="w-40 h-40 rounded-2xl bg-gradient-to-b from-pink-900/30 to-red-900/20 border border-pink-500/20 flex items-center justify-center p-3 shadow-lg">
+<img alt="Cybernetic combat helmet" class="object-contain w-full h-full drop-shadow-[0_10px_15px_rgba(244,63,94,0.4)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0kxQIfu28vKYW1BryDOvWO1ZI5v5dlX3M-nySB4cBqFWoCdmcxuNMqOWgubgyQCAqDmT9rfpv6hzEkDjUsXI0M5V6dlEiv0lQNWfRBR5Gth-4SBPpF6nRxK8Mge_n7FcOcCddcsFR6bbi67gMZIbp2gwsebTGdKbHBf8GiFXBzYSzAEvzla3_O12PFqBZmL9Bn49kSQbZhtUqoqv4q_wfdxGl5O-XfnKTaMJHqZ0W6yQIKtZiIedsvg"/>
+</div>
+</div>
+<h3 class="text-base font-bold text-white mb-1">Apex Cybernetic Visor</h3>
+<p class="text-xs text-slate-400 mb-4">HUD tracking radar enhancement + 1500 XP battle pass bonus</p>
+<button class="w-full py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-sm shadow-neon-purple transition mb-3">
+              Play Now
+            </button>
+<div class="inline-flex items-center gap-1 text-[11px] font-semibold text-yellow-400 bg-yellow-500/10 px-3 py-1 rounded-full neon-border-gold">
+<i class="w-3 h-3" data-lucide="clock"></i> Limited Time
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ExclusiveBetaAndQuests -->
+<!-- BEGIN: CallToActionFooterBanner -->
+<section class="py-16 relative" data-purpose="final-cta">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+<div class="relative glass-card rounded-3xl p-8 sm:p-12 text-center overflow-hidden border border-purple-500/30 shadow-neon-purple">
+<!-- Ambient Radial Glow -->
+<div class="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-600/10 to-cyan-600/20 pointer-events-none"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
+            Start Gaming <span class="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">&amp; Earning</span> Today
+          </h2>
+<p class="text-slate-300 text-sm sm:text-base mb-8">
+            Create your account in under 30 seconds. Connect your favorite platforms, take on daily missions, and claim your share of the FlankerIndex.
+          </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-500 hover:brightness-110 text-white font-bold text-base shadow-neon-purple transition transform active:scale-95">
+              Sign Up Free
+            </button>
+<button class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 font-semibold text-base border border-white/10 transition">
+              Explore Vault Catalog
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: CallToActionFooterBanner -->
+<!-- BEGIN: MainFooter -->
+<footer class="border-t border-white/10 bg-[#04050e] py-10" data-purpose="main-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center">
+<i class="w-4 h-4 text-white" data-lucide="sparkles"></i>
+</div>
+<span class="text-lg font-black tracking-wider text-white">FlankerIndex</span>
+</div>
+<p class="text-xs text-slate-500 text-center">
+        © 2026 FlankerIndex Interactive. All rights reserved. Gaming rewards platform.
+      </p>
+<div class="flex items-center space-x-6 text-xs text-slate-400">
+<a class="hover:text-purple-400 transition" href="#">Terms</a>
+<a class="hover:text-purple-400 transition" href="#">Privacy Policy</a>
+<a class="hover:text-purple-400 transition" href="#">Support</a>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- Floating Customer Support Widget Button (Visible in Reference UI) -->
+<div class="fixed bottom-6 right-6 z-50">
+<button aria-label="Customer Support" class="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 shadow-neon-purple flex items-center justify-center text-white hover:scale-110 active:scale-95 transition">
+<i class="w-5 h-5 fill-white/80" data-lucide="message-square"></i>
+</button>
+</div>
+<!-- Lucide Icon Renderer Script -->
+<script data-purpose="icon-renderer">
+    lucide.createIcons();
+  </script>
+</body></html>
