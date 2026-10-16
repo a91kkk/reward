@@ -554,6 +554,67 @@
           gap: 5px;
         }
       }
+    
+      /* Responsive refinements: preserve the existing visual design */
+      html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+      }
+      img, svg, video, canvas, iframe {
+        max-width: 100%;
+      }
+      .wrap, .topbar .wrap, .hero-grid, .section, footer {
+        min-width: 0;
+      }
+      .hero-grid > *, .cards > *, .steps > *, .footer-main > *,
+      .signup-card, .promo > *, .step > * {
+        min-width: 0;
+      }
+      .signup-card, .info-card, .step, .promo {
+        overflow-wrap: anywhere;
+      }
+      input, select, textarea, button {
+        max-width: 100%;
+      }
+      @media (min-width: 601px) and (max-width: 900px) {
+        .wrap { width: calc(100% - 48px); }
+        .hero-grid { gap: 32px; }
+        .signup-card { width: 100%; }
+        .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .step { align-items: flex-start; }
+      }
+      @media (max-width: 600px) {
+        .wrap { width: calc(100% - 32px); }
+        .topbar .wrap { gap: 10px; }
+        .brand { gap: 8px; min-width: 0; }
+        .brand-mark { flex: 0 0 36px; }
+        .nav { flex: 0 0 auto; }
+        .nav .nav-cta { white-space: nowrap; }
+        .eyebrow { max-width: 100%; white-space: normal; }
+        h1 { font-size: clamp(32px, 9vw, 39px); overflow-wrap: break-word; }
+        .hero-grid { grid-template-columns: minmax(0, 1fr); }
+        .trust-row { align-items: flex-start; }
+        .signup-card { width: 100%; padding: 22px 16px; }
+        .cards, .steps { grid-template-columns: minmax(0, 1fr); }
+        .step { align-items: flex-start; }
+        .promo { width: 100%; }
+        .promo-link { max-width: 100%; white-space: normal; text-align: center; }
+        .footer-main { min-width: 0; }
+        .footer-links { gap: 12px 18px; }
+        .copyright > * { min-width: 0; overflow-wrap: anywhere; }
+      }
+      @media (max-width: 360px) {
+        .wrap { width: calc(100% - 24px); }
+        .brand { font-size: 16px; letter-spacing: -0.4px; }
+        .brand-mark { width: 32px; height: 32px; flex-basis: 32px; }
+        .nav .nav-cta { padding: 9px 10px; font-size: 11px; }
+        .signup-card h2 { font-size: 20px; }
+        .section { padding: 44px 0; }
+        .info-card, .step { padding: 17px; }
+      }
+
     </style>
   </head>
   <body>
