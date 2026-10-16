@@ -20,30 +20,32 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- GetResponse Analytics -->
-    <script type="text/javascript">
-      (function (m, o, n, t, e, r, _) {
-        m["__GetResponseAnalyticsObject"] = e;
-        m[e] =
-          m[e] ||
-          function () {
-            (m[e].q = m[e].q || []).push(arguments);
-          };
-        r = o.createElement(n);
-        _ = o.getElementsByTagName(n)[0];
-        r.async = 1;
-        r.src = t;
-        r.setAttribute("crossorigin", "use-credentials");
-        _.parentNode.insertBefore(r, _);
-      })(
-        window,
-        document,
-        "script",
-        "https://an.gr-wcon.com/script/dd62f321-3858-4e66-acc6-45d191be2c6a/ga.js",
-        "GrTracking"
-      );
-    </script>
-    <!-- End GetResponse Analytics -->
+
+<!-- GetResponse Analytics / WebConnect -->
+<script type="text/javascript">
+  (function(m, o, n, t, e, r, _) {
+    m['__GetResponseAnalyticsObject'] = e;
+    m[e] = m[e] || function() {
+      (m[e].q = m[e].q || []).push(arguments);
+    };
+
+    r = o.createElement(n);
+    _ = o.getElementsByTagName(n)[0];
+    r.async = 1;
+    r.src = t;
+    r.setAttribute('crossorigin', 'use-credentials');
+
+    _.parentNode.insertBefore(r, _);
+  })(
+    window,
+    document,
+    'script',
+    'https://an.gr-wcon.com/script/dd62f321-3858-4e66-acc6-45d191be2c6a/ga.js',
+    'GrTracking'
+  );
+</script>
+<!-- End GetResponse Analytics -->
+
     <style>
       :root {
         --ink: #14213d;
@@ -599,10 +601,13 @@
               Enter your email below to subscribe to FlankerIndex updates.
             </p>
             <div class="form-slot">
-              <getresponse-form
-                form-id="3ffce884-aaa6-4b5b-be4f-230c9bfab55f"
-                e="1"
-              ></getresponse-form>
+
+<!-- GetResponse Embedded Form -->
+<getresponse-form
+  form-id="3ffce884-aaa6-4b5b-be4f-230c9bfab55f"
+  e="1">
+</getresponse-form>
+
             </div>
             <p class="consent">
               By subscribing, you agree to receive newsletters, online survey
